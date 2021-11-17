@@ -5,6 +5,7 @@ class LinkedList
     @head = nil
     @tail = nil
     @size = 0
+    @index = []
   end
 
   def append(value)
@@ -15,6 +16,7 @@ class LinkedList
       value.next = value
     end
     @size += 1
+    @index.push(value)
   end
 
   def prepend(value)
@@ -25,6 +27,7 @@ class LinkedList
       value.next = value
     end
     @size += 1
+    @index.unshift(value)
   end
 
   def size
@@ -39,8 +42,11 @@ class LinkedList
     @tail
   end
 
-end
+  def at(index)
+    @index[index]
+  end
 
+end
 
 class Node
   attr_accessor :next, :data
@@ -59,3 +65,4 @@ linkedlist.append(node2)
 p linkedlist.size
 p linkedlist.head
 p linkedlist.tail
+p linkedlist.at(1)
