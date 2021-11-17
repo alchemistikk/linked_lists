@@ -4,6 +4,7 @@ class LinkedList
   def initialize
     @head = nil
     @tail = nil
+    @size = 0
   end
 
   def append(value)
@@ -13,6 +14,7 @@ class LinkedList
     else
       value.next = value
     end
+    @size += 1
   end
 
   def prepend(value)
@@ -22,8 +24,12 @@ class LinkedList
     else
       value.next = value
     end
+    @size += 1
   end
 
+  def size
+    @size
+  end
 end
 
 class Node
@@ -34,3 +40,10 @@ class Node
     @data = data
   end
 end
+
+linkedlist = LinkedList.new
+node1 = Node.new(5)
+node2 = Node.new("pie")
+linkedlist.prepend(node1)
+linkedlist.append(node2)
+p linkedlist.size
