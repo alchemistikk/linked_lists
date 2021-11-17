@@ -2,29 +2,33 @@ class LinkedList
   attr_accessor :name
 
   def initialize
-    @head = nil
-    @tail = nil
+    @head = nil # 4 node
+    @tail = nil # 4 node
     @size = 0
     @index = []
   end
 
   def append(value)
-    @tail = value
     if @head.nil?
       @head = value
+      @tail = value
     else
-      value.next = value
+      @tail.next = value
+      value.previous = @tail 
+      @tail = value 
     end
     @size += 1
     @index.push(value)
   end
 
   def prepend(value)
-    @head = value
     if @head.nil?
+      @head = value
       @tail = value
     else
-      value.next = value
+      value.next = @head
+      value.previous = value
+      @head = value
     end
     @size += 1
     @index.unshift(value)
@@ -46,13 +50,22 @@ class LinkedList
     @index[index]
   end
 
+  def pop
+    return if @head.nil?
+
+    @tail = @tail.previous
+    @tail.next = @tail
+    @size -= 1
+    @index.pop
+  end
 end
 
 class Node
-  attr_accessor :next, :data
+  attr_accessor :next, :previous, :data
 
   def initialize(data)
     @next = nil
+    @previous = nil
     @data = data
   end
 end
@@ -60,9 +73,16 @@ end
 linkedlist = LinkedList.new
 node1 = Node.new(5)
 node2 = Node.new("pie")
+node3 = Node.new(49)
+node4 = Node.new("pizza")
+
 linkedlist.prepend(node1)
 linkedlist.append(node2)
+linkedlist.prepend(node3)
+linkedlist.append(node4)
 p linkedlist.size
 p linkedlist.head
 p linkedlist.tail
 p linkedlist.at(1)
+linkedlist.pop
+p linkedlist.size
