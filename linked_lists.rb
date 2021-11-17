@@ -30,7 +30,17 @@ class LinkedList
   def size
     @size
   end
+
+  def head
+    @head
+  end
+
+  def tail
+    @tail
+  end
+
 end
+
 
 class Node
   attr_accessor :next, :data
@@ -47,3 +57,5 @@ node2 = Node.new("pie")
 linkedlist.prepend(node1)
 linkedlist.append(node2)
 p linkedlist.size
+p linkedlist.head
+p linkedlist.tail
