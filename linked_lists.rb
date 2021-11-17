@@ -58,6 +58,12 @@ class LinkedList
     @size -= 1
     @index.pop
   end
+
+  #contains?(value) returns true if the passed in value is in the list and otherwise returns false.
+  def contains?(value)
+    return true if @index.include?(value)
+    false
+  end
 end
 
 class Node
@@ -86,3 +92,5 @@ p linkedlist.tail
 p linkedlist.at(1)
 linkedlist.pop
 p linkedlist.size
+p linkedlist.contains?(node1)
+p linkedlist.contains?(100)
