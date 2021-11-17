@@ -2,8 +2,8 @@ class LinkedList
   attr_accessor :name
 
   def initialize
-    @head = nil # 4 node
-    @tail = nil # 4 node
+    @head = nil
+    @tail = nil
     @size = 0
     @index = []
   end
@@ -59,10 +59,12 @@ class LinkedList
     @index.pop
   end
 
-  #contains?(value) returns true if the passed in value is in the list and otherwise returns false.
   def contains?(value)
-    return true if @index.include?(value)
-    false
+    @index.include?(value)
+  end
+
+  def find(value)
+    @index.index(value) || nil
   end
 end
 
@@ -94,3 +96,5 @@ linkedlist.pop
 p linkedlist.size
 p linkedlist.contains?(node1)
 p linkedlist.contains?(100)
+p linkedlist.find(node3)
+p linkedlist.find(node4)
