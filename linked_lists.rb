@@ -66,6 +66,15 @@ class LinkedList
   def find(value)
     @index.index(value) || nil
   end
+
+  def to_s
+    str = ''
+    @index.each do |node|
+      str += "( #{node.data} ) -> "
+    end
+    str += 'nil'
+    puts str
+  end
 end
 
 class Node
@@ -98,3 +107,4 @@ p linkedlist.contains?(node1)
 p linkedlist.contains?(100)
 p linkedlist.find(node3)
 p linkedlist.find(node4)
+linkedlist.to_s
