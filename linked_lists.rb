@@ -10,9 +10,17 @@ class LinkedList
     @tail = value
     if @head.nil?
       @head = value
+    else
+      value.next = value
+    end
+  end
+
+  def prepend(value)
+    @head = value
+    if @head.nil?
       @tail = value
     else
-      @tail.next = entry # At this point @tail holds the Node, so we can call the Node's setter for #next
+      value.next = value
     end
   end
 
