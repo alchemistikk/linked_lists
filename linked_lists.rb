@@ -14,11 +14,10 @@ class LinkedList
       @tail = value
     else
       @tail.next = value
-      value.previous = @tail 
+      value.previous = @tail
       @tail = value 
     end
     @size += 1
-    # @index.push(value)
   end
 
   def prepend(value)
@@ -31,7 +30,6 @@ class LinkedList
       @head = value
     end
     @size += 1
-    # @index.unshift(value)
   end
 
   def size
@@ -58,11 +56,12 @@ class LinkedList
     @tail = @tail.previous
     @tail.next = @tail
     @size -= 1
-    # @index.pop
   end
 
   def contains?(value)
-    @index.include?(value)
+    return true if find(value)
+
+    false
   end
 
   def find(value)
@@ -108,14 +107,15 @@ linkedlist.prepend(node1)
 linkedlist.append(node2)
 linkedlist.prepend(node3)
 linkedlist.append(node4)
-p linkedlist.size
 p linkedlist.head
 p linkedlist.tail
 p linkedlist.at(2).data
-# linkedlist.pop
-# p linkedlist.size
-# p linkedlist.contains?(node1)
-# p linkedlist.contains?(100)
+linkedlist.pop
+p linkedlist.size
+linkedlist.append(node4)
+p linkedlist.size
+p linkedlist.contains?(node1)
+p linkedlist.contains?(100)
 p linkedlist.find(node2)
 p linkedlist.find(node4)
 p linkedlist.to_s
