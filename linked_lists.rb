@@ -18,7 +18,7 @@ class LinkedList
       @tail = value 
     end
     @size += 1
-    @index.push(value)
+    # @index.push(value)
   end
 
   def prepend(value)
@@ -31,7 +31,7 @@ class LinkedList
       @head = value
     end
     @size += 1
-    @index.unshift(value)
+    # @index.unshift(value)
   end
 
   def size
@@ -47,7 +47,9 @@ class LinkedList
   end
 
   def at(index)
-    @index[index]
+    pointer = @head
+    index.times { pointer = pointer.next }
+    pointer
   end
 
   def pop
@@ -67,14 +69,13 @@ class LinkedList
     @index.index(value) || nil
   end
 
-  def to_s
-    str = ''
-    @index.each do |node|
-      str += "( #{node.data} ) -> "
-    end
-    str += 'nil'
-    puts str
-  end
+  # def to_s
+  #   str = ''
+  #   @index.each do |node|
+  #     str += "( #{node.data} ) -> "
+  #   end
+  #   str += 'nil'
+  # end
 end
 
 class Node
@@ -100,11 +101,11 @@ linkedlist.append(node4)
 p linkedlist.size
 p linkedlist.head
 p linkedlist.tail
-p linkedlist.at(1)
-linkedlist.pop
-p linkedlist.size
-p linkedlist.contains?(node1)
-p linkedlist.contains?(100)
-p linkedlist.find(node3)
-p linkedlist.find(node4)
-linkedlist.to_s
+p linkedlist.at(2).data
+# linkedlist.pop
+# p linkedlist.size
+# p linkedlist.contains?(node1)
+# p linkedlist.contains?(100)
+# p linkedlist.find(node3)
+# p linkedlist.find(node4)
+p linkedlist.to_s
