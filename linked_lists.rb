@@ -58,7 +58,7 @@ class LinkedList
     @tail = @tail.previous
     @tail.next = @tail
     @size -= 1
-    @index.pop
+    # @index.pop
   end
 
   def contains?(value)
@@ -66,7 +66,15 @@ class LinkedList
   end
 
   def find(value)
-    @index.index(value) || nil
+    pointer = @head
+    index = 0
+    size.times do
+      return index if pointer == value
+
+      pointer = pointer.next
+      index += 1
+    end
+    nil
   end
 
   # def to_s
@@ -106,6 +114,6 @@ p linkedlist.at(2).data
 # p linkedlist.size
 # p linkedlist.contains?(node1)
 # p linkedlist.contains?(100)
-# p linkedlist.find(node3)
+p linkedlist.find(node2)
 # p linkedlist.find(node4)
 p linkedlist.to_s
