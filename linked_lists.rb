@@ -77,13 +77,15 @@ class LinkedList
     nil
   end
 
-  # def to_s
-  #   str = ''
-  #   @index.each do |node|
-  #     str += "( #{node.data} ) -> "
-  #   end
-  #   str += 'nil'
-  # end
+  def to_s
+    str = ''
+    pointer = @head
+    size.times do
+      str += "( #{pointer.data} ) -> "
+      pointer = pointer.next
+    end
+    str += 'nil'
+  end
 end
 
 class Node
@@ -115,5 +117,5 @@ p linkedlist.at(2).data
 # p linkedlist.contains?(node1)
 # p linkedlist.contains?(100)
 p linkedlist.find(node2)
-# p linkedlist.find(node4)
+p linkedlist.find(node4)
 p linkedlist.to_s
