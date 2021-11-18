@@ -5,7 +5,6 @@ class LinkedList
     @head = nil
     @tail = nil
     @size = 0
-    @index = []
   end
 
   def append(value)
